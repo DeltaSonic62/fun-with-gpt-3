@@ -27,6 +27,7 @@ export default function getResponse(prompt: string) {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*',
 			Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
 		},
 		body: JSON.stringify(data),
