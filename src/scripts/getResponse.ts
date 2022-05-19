@@ -26,8 +26,10 @@ export default function getResponse(prompt: string) {
 	fetch('https://api.openai.com/v1/engines/text-curie-001/completions', {
 		method: 'POST',
 		headers: {
-			'Content-Type': 'application/json',
+			'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 			'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Methods': 'POST',
+			'Content-Type': 'application/json',
 			Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
 		},
 		body: JSON.stringify(data),
