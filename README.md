@@ -2,8 +2,6 @@
 
 A website that uses GPT-3 to generate text.
 
----
-
 ## Technologies Used
 
 -   React
@@ -13,16 +11,12 @@ A website that uses GPT-3 to generate text.
 -   TailwindCSS
 -   OpenAI GPT-3
 
----
-
 ## Features
 
 -   Generate responses using GPT-3
 -   Responses are saved if you close or reload the page
 -   Delete responses (and undo)
 -   Dark and light modes (+ a theme switcher)
-
----
 
 ## Installation
 
@@ -40,4 +34,4 @@ pnpm install
 pnpm dev
 ```
 
-_Alternatively, visit the website: [https://fun-with-gpt-3-three.vercel.app/]_
+_Alternatively, visit the website: https://fun-with-gpt-3-three.vercel.app/_
