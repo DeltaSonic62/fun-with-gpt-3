@@ -20,14 +20,24 @@ function App() {
 			return;
 		}
 
-		const key = Date.now();
-		const newObj = { key, prompt: promptRef.current, response: getResponse(promptRef.current) };
+		// Get Response
+		getResponse(promptRef.current).then((response) => {
+			const key = Date.now();
+			const newObj = {
+				key,
+				prompt: promptRef.current,
+				response: response.trim(),
+			};
 
-		// Save to localStorage
-		window.localStorage.setItem('responses', JSON.stringify([...responses, newObj]));
+			// Save to localStorage
+			// Updating using responses state is unreliable as it may cause some responses to go missing
+			const oldResponses = JSON.parse(window.localStorage.getItem('responses') || '[]');
+			const newResponses = [newObj, ...oldResponses];
+			window.localStorage.setItem('responses', JSON.stringify(newResponses));
 
-		// Save to state
-		setResponses((prev) => [...prev, newObj]);
+			// Save to state
+			setResponses((prev) => [newObj, ...prev]);
+		});
 	};
 
 	const handlePromptInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -112,7 +122,7 @@ function App() {
 					<h2 className='mt-20 text-3xl font-semibold font-title md:text-4xl'>
 						Responses
 					</h2>
-					<div className='flex flex-col-reverse items-center justify-center w-full gap-5'>
+					<div className='flex flex-col items-center justify-center w-full gap-5'>
 						{responses.map((response) => (
 							<ResponseCard
 								key={response.key}
