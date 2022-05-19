@@ -18,7 +18,7 @@ const ThemeButton = () => {
 	return (
 		<button
 			aria-label='Toggle theme button'
-			className='fixed p-2 text-black bg-white rounded-full dark:bg-black dark:text-white top-5 right-5'
+			className='fixed p-2 text-black transition bg-white rounded-full dark:bg-black dark:text-white top-5 right-5 focus:outline-none focus:ring-2 focus:ring-blue-700'
 			onClick={handleClick}>
 			{isLightTheme ? <SunIcon className='w-4 h-4' /> : <MoonIcon className='w-4 h-4' />}
 		</button>
